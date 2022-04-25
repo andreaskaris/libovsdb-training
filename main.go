@@ -19,6 +19,13 @@ const (
 	nbdbSocket = "127.0.0.1:39641"
 )
 
+// This requires a running OVN Northbound database (and future examples potentially a Southbound
+// database as well).
+// ovsdb-tool create /etc/ovn/ovnsb_db.db /usr/share/ovn/ovn-sb.ovsschema
+// ovsdb-tool create /etc/ovn/ovnnb_db.db /usr/share/ovn/ovn-nb.ovsschema
+// ovsdb-server -vconsole:info -vfile:off --log-file=/var/log/ovn/ovsdb-server-sb.log --remote=punix:/var/run/ovn/ovnsb_db.sock --pidfile=/var/run/ovn/ovnsb_db.pid --unixctl=/var/run/ovn/ovnsb_db.ctl --remote=ptcp:39642 /etc/ovn/ovnsb_db.db
+// ovsdb-server -vconsole:info -vfile:off --log-file=/var/log/ovn/ovsdb-server-nb.log --remote=punix:/var/run/ovn/ovnnb_db.sock --pidfile=/var/run/ovn/ovnnb_db.pid --unixctl=/var/run/ovn/ovnnb_db.ctl --remote=ptcp:39641 /etc/ovn/ovnnb_db.db
+
 // Make sure to use the latest version of libovsdb. More recently, the library has gone through
 // quite a few changes. These examples are based on: v0.6.1-0.20220328142833-2cbe2d093e12
 // go get github.com/ovn-org/libovsdb@main
